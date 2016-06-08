@@ -95,5 +95,25 @@ namespace ShapeTest.Business.UnitTests
 
             _MockShapesRepository.VerifyAll();
         }
+
+        [TestMethod]
+        public void ShouldComputeTotalAreaForRectangles()
+        {
+            const double expectedResult = 11;
+            var shapes = new List<Shape>
+            {
+                new Rectangle { Height = 2, Width = 1 },
+                new Rectangle { Height = 3, Width = 3 }
+            };
+
+            _MockShapesRepository.Setup(m => m.GetShapes()).Returns(shapes);
+            var computeAreaService = new ComputeAreaService(_MockShapesRepository.Object);
+
+            var result = computeAreaService.ComputeTotalArea();
+
+            result.Should().BeApproximately(expectedResult, ExpectedPrecision);
+
+            _MockShapesRepository.VerifyAll();
+        }
     }
 }
