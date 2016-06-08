@@ -115,5 +115,27 @@ namespace ShapeTest.Business.UnitTests
 
             _MockShapesRepository.VerifyAll();
         }
+
+        [TestMethod]
+        public void ShouldComputeTotalAreaForMixedShapeTypes()
+        {
+            const double expectedResult = 21.5663706143592D;
+            var shapes = new List<Shape>
+            {
+                new Rectangle { Height = 2, Width = 1 },
+                new Triangle { Height = 3, Base = 2 },
+                new Square { Lenght = 2 },
+                new Circle { Radius = 2 }
+            };
+
+            _MockShapesRepository.Setup(m => m.GetShapes()).Returns(shapes);
+            var computeAreaService = new ComputeAreaService(_MockShapesRepository.Object);
+
+            var result = computeAreaService.ComputeTotalArea();
+
+            result.Should().BeApproximately(expectedResult, ExpectedPrecision);
+
+            _MockShapesRepository.VerifyAll();
+        }
     }
 }
