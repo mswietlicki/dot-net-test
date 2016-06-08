@@ -43,5 +43,9 @@
                 OnEntityChanged();
             }
         }
+        public override double GetArea()
+        {
+            return 0.5 * Base * Height;
+        }
     }
 }
