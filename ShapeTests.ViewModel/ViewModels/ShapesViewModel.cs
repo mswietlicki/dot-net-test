@@ -12,7 +12,7 @@ namespace ShapeTests.ViewModel
 {
     public class ShapesViewModel : ViewModel
     {
-        private readonly ITrianglesRepository _TrianglesRepo;
+        private readonly IShapeRepository _ShapeRepo;
         private readonly IComputeAreaService _ComputeAreaService;
         private readonly ISubmissionService _SubmissionService;
 
@@ -29,11 +29,11 @@ namespace ShapeTests.ViewModel
         private MvxCommand _ComputeAreaCommand;
         private MvxCommand _SubmitAreaCommand;
 
-        public ShapesViewModel(ITrianglesRepository triangleRepo, 
+        public ShapesViewModel(IShapeRepository shapeRepo, 
                                IComputeAreaService computeAreaService,
                                ISubmissionService submissionService)
         {
-            _TrianglesRepo = triangleRepo;
+            _ShapeRepo = shapeRepo;
             _ComputeAreaService = computeAreaService;
             _SubmissionService = submissionService;
 
@@ -105,11 +105,11 @@ namespace ShapeTests.ViewModel
 
         public override void Start()
         {
-           List<Triangle> triangles = _TrianglesRepo.GetTriangles();
-           TriangleListItems = CreateListViewModelsFromTriangeList(triangles);
+           var shapes = _ShapeRepo.GetShapes();
+           TriangleListItems = CreateListViewModelsFromTriangeList(shapes.Cast<Triangle>().ToList());
            SelectedTriangleListItemViewModel = TriangleListItems.FirstOrDefault();
 
-            _TrianglesRepo.TriangleAdded += OnTriangleAdded;
+            _ShapeRepo.TriangleAdded += OnShapeAdded;
         }
 
         public void AddTriangle()
@@ -117,7 +117,7 @@ namespace ShapeTests.ViewModel
             ShowViewModel<AddTriangleViewModel>();
         }
 
-        public void OnTriangleAdded(object sender, TriangleEventArgs args)
+        public void OnShapeAdded(object sender, TriangleEventArgs args)
         {
             TriangleListItemViewModel viewModel = new TriangleListItemViewModel { Triangle = args.Triangle };
             TriangleListItems.Add(viewModel);
@@ -129,7 +129,7 @@ namespace ShapeTests.ViewModel
             {
                 var viewModelToDelete = SelectedTriangleListItemViewModel;
                 SelectedTriangleContentViewModel = null;
-                _TrianglesRepo.RemoveTriangle(viewModelToDelete.Triangle);
+                _ShapeRepo.RemoveTriangle(viewModelToDelete.Triangle);
                 TriangleListItems.Remove(viewModelToDelete);
             }
         }

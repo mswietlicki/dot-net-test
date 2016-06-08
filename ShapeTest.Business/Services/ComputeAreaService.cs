@@ -1,4 +1,5 @@
-﻿using ShapeTest.Business.Repositories;
+﻿using ShapeTest.Business.Entities;
+using ShapeTest.Business.Repositories;
 
 namespace ShapeTest.Business.Services
 {
@@ -6,16 +7,16 @@ namespace ShapeTest.Business.Services
 
     public class ComputeAreaService : IComputeAreaService
     {
-        private readonly ITrianglesRepository _TrianglesRepo;
+        private readonly IShapeRepository _ShapeRepo;
 
-        public ComputeAreaService(ITrianglesRepository trianglesRepo)
+        public ComputeAreaService(IShapeRepository shapeRepo)
         {
-            _TrianglesRepo = trianglesRepo;
+            _ShapeRepo = shapeRepo;
         }
 
         public double ComputeTotalArea()
         {
-            var triangles = _TrianglesRepo.GetTriangles();
+            var triangles = _ShapeRepo.GetShapes().Cast<Triangle>();
 
             return triangles.Sum(triangle => 0.5 * triangle.Base * triangle.Height);
         }

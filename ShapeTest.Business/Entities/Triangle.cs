@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class Triangle
+    public class Triangle : Shape
     {
         private string _Name;
         private double _Base;
