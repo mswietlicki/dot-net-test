@@ -6,11 +6,11 @@ namespace ShapeTest.Business.Repositories
 {
     public class ShapeRepository : IShapeRepository
     {
-        private readonly List<Triangle> _Triangles; 
+        private readonly List<Shape> _Shapes; 
 
         public ShapeRepository()
         {
-            _Triangles = new List<Triangle>
+            _Shapes = new List<Shape>
             {
                 new Triangle
                 {
@@ -37,24 +37,24 @@ namespace ShapeTest.Business.Repositories
 
         public List<Shape> GetShapes()
         {
-            return _Triangles.Cast<Shape>().ToList();
+            return _Shapes;
         }
 
-        public void AddTriangle(Triangle triangle)
+        public void AddShape(Shape shape)
         {
-            _Triangles.Add(triangle);
-            OnTriangleAdded(triangle);
+            _Shapes.Add(shape);
+            OnShapeAdded(shape);
         }
 
         public bool RemoveTriangle(Triangle triangle)
         {
-            return _Triangles.Remove(triangle);
+            return _Shapes.Remove(triangle);
         }
 
-        protected void OnTriangleAdded(Triangle triangle)
+        protected void OnShapeAdded(Shape shape)
         {
             TriangleAddedEventHandler handler = TriangleAdded;
-            handler?.Invoke(this, new TriangleEventArgs(triangle));
+            handler?.Invoke(this, new TriangleEventArgs(shape as Triangle));
         }
     }
 }

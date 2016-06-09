@@ -51,7 +51,7 @@ namespace ShapeTests.ViewModel.ViewModels
                 Name = "New Triangle"                            
             };
 
-            _ShapeRepo.AddTriangle(triangle);
+            _ShapeRepo.AddShape(triangle);
             Close(this);
         }
 

@@ -9,7 +9,7 @@ namespace ShapeTest.Business.Repositories
 
         List<Shape> GetShapes();
 
-        void AddTriangle(Triangle triangle);
+        void AddShape(Shape shape);
 
         bool RemoveTriangle(Triangle triangle);
     }

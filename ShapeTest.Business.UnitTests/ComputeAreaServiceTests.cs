@@ -32,16 +32,8 @@ namespace ShapeTest.Business.UnitTests
 
             var triangles = new List<Shape>
             {
-                new Triangle
-                    {
-                        Base = 2,
-                        Height = 4
-                    },
-                new Triangle
-                    {
-                        Base = 3,
-                        Height = 6
-                    }                                   
+                new Triangle { Base = 2, Height = 4 },
+                new Triangle { Base = 3, Height = 6 }                                   
             };
 
             _MockShapesRepository.Setup(m => m.GetShapes()).Returns(triangles);
