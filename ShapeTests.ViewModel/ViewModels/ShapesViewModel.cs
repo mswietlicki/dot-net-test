@@ -26,25 +26,25 @@ namespace ShapeTests.ViewModel.ViewModels
             _ComputeAreaService = computeAreaService;
             _SubmissionService = submissionService;
 
-            TriangleListItems = new ObservableCollection<TriangleListItemViewModel>();
+            ShapeListItems = new ObservableCollection<ShapeListItemViewModel>();
 
-            AddTriangleCommand = new MvxCommand(AddTriangle);
-            RemoveTriangleCommand = new MvxCommand(RemoveSelectedTriangle);
+            AddShapeCommand = new MvxCommand(AddShape);
+            RemoveShapeCommand = new MvxCommand(RemoveSelectedTriangle);
             ComputeAreaCommand = new MvxCommand(ComputeTotalArea);
             SubmitAreaCommand = new MvxCommand(SubmitArea);
         }
 
-        public ObservableCollection<TriangleListItemViewModel> TriangleListItems { get; set; }
+        public ObservableCollection<ShapeListItemViewModel> ShapeListItems { get; set; }
 
-        public TriangleListItemViewModel SelectedTriangleListItemViewModel { get; set; }
+        public ShapeListItemViewModel SelectedShapeListItemViewModel { get; set; }
 
         public TriangleViewModel SelectedTriangleContentViewModel { get; set; }
 
         public double TotalArea { get; set; }
 
-        public MvxCommand AddTriangleCommand { get; set; }
+        public MvxCommand AddShapeCommand { get; set; }
 
-        public MvxCommand RemoveTriangleCommand { get; set; }
+        public MvxCommand RemoveShapeCommand { get; set; }
 
         public MvxCommand ComputeAreaCommand { get; set; }
 
@@ -54,7 +54,7 @@ namespace ShapeTests.ViewModel.ViewModels
         {
             base.RaisePropertyChanged(changedArgs);
 
-            if (changedArgs.PropertyName == nameof(SelectedTriangleListItemViewModel))
+            if (changedArgs.PropertyName == nameof(SelectedShapeListItemViewModel))
             {
                 UpdateTriangleContent();
             }
@@ -63,31 +63,31 @@ namespace ShapeTests.ViewModel.ViewModels
         public override void Start()
         {
            var shapes = _ShapeRepo.GetShapes();
-           TriangleListItems = CreateListViewModelsFromTriangeList(shapes.Cast<Triangle>().ToList());
-           SelectedTriangleListItemViewModel = TriangleListItems.FirstOrDefault();
+           ShapeListItems = CreateListViewModelsFromTriangeList(shapes.Cast<Triangle>().ToList());
+           SelectedShapeListItemViewModel = ShapeListItems.FirstOrDefault();
 
             _ShapeRepo.TriangleAdded += OnShapeAdded;
         }
 
-        public void AddTriangle()
+        public void AddShape()
         {
-            ShowViewModel<AddTriangleViewModel>();
+            ShowViewModel<AddShapeViewModel>();
         }
 
         public void OnShapeAdded(object sender, TriangleEventArgs args)
         {
-            var viewModel = new TriangleListItemViewModel { Triangle = args.Triangle };
-            TriangleListItems.Add(viewModel);
+            var viewModel = new ShapeListItemViewModel { Shape = args.Triangle };
+            ShapeListItems.Add(viewModel);
         }
 
         public void RemoveSelectedTriangle()
         {
-            if (SelectedTriangleListItemViewModel != null)
+            if (SelectedShapeListItemViewModel != null)
             {
-                var viewModelToDelete = SelectedTriangleListItemViewModel;
+                var viewModelToDelete = SelectedShapeListItemViewModel;
                 SelectedTriangleContentViewModel = null;
-                _ShapeRepo.RemoveTriangle(viewModelToDelete.Triangle);
-                TriangleListItems.Remove(viewModelToDelete);
+                _ShapeRepo.RemoveShape(viewModelToDelete.Shape);
+                ShapeListItems.Remove(viewModelToDelete);
             }
         }
 
@@ -101,25 +101,25 @@ namespace ShapeTests.ViewModel.ViewModels
             _SubmissionService.SubmitTotalArea(TotalArea);
         }
 
-        private ObservableCollection<TriangleListItemViewModel> CreateListViewModelsFromTriangeList(IEnumerable<Triangle> triangles)
+        private ObservableCollection<ShapeListItemViewModel> CreateListViewModelsFromTriangeList(IEnumerable<Triangle> triangles)
         {
-            var viewModels = triangles.Select(_ => new TriangleListItemViewModel { Triangle = _ });
-            return new ObservableCollection<TriangleListItemViewModel>(viewModels);
+            var viewModels = triangles.Select(_ => new ShapeListItemViewModel { Shape = _ });
+            return new ObservableCollection<ShapeListItemViewModel>(viewModels);
         }
 
         private void UpdateTriangleContent()
         {
-            if (SelectedTriangleListItemViewModel != null)
+            if (SelectedShapeListItemViewModel != null)
             {
                 var contentViewModel = new TriangleViewModel
                 {
-                    Triangle = SelectedTriangleListItemViewModel.Triangle
+                    Triangle = SelectedShapeListItemViewModel.Shape as Triangle
                 };
                 SelectedTriangleContentViewModel = contentViewModel;
             }
             else
             {
-                SelectedTriangleListItemViewModel = null;
+                SelectedShapeListItemViewModel = null;
             }
         }
     }

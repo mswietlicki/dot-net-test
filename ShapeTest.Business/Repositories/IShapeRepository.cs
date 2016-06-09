@@ -11,6 +11,6 @@ namespace ShapeTest.Business.Repositories
 
         void AddShape(Shape shape);
 
-        bool RemoveTriangle(Triangle triangle);
+        bool RemoveShape(Shape shape);
     }
 }

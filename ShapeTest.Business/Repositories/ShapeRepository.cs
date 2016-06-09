@@ -46,9 +46,9 @@ namespace ShapeTest.Business.Repositories
             OnShapeAdded(shape);
         }
 
-        public bool RemoveTriangle(Triangle triangle)
+        public bool RemoveShape(Shape shape)
         {
-            return _Shapes.Remove(triangle);
+            return _Shapes.Remove(shape);
         }
 
         protected void OnShapeAdded(Shape shape)

@@ -9,9 +9,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <views:MvxWpfView.Resources>
-        <DataTemplate x:Key ="TriangleListItemTemplate" DataType="{x:Type viewModels:TriangleListItemViewModel}">
+        <DataTemplate x:Key ="TriangleListItemTemplate" DataType="{x:Type viewModels:ShapeListItemViewModel}">
             <Grid>
-                <TextBlock x:Name="TriangleName" Text="{Binding TriangleName}" />
+                <TextBlock x:Name="TriangleName" Text="{Binding ShapeName}" />
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="TriangleContentTemplate" DataType="{x:Type shapes:TriangleViewModel}">
