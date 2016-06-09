@@ -26,7 +26,7 @@ namespace ShapeTest.Business.UnitTests
             var shape = new Circle();
 
             var shapeRepository = new ShapeRepository();
-
+            
             shapeRepository.AddShape(shape);
             var shapes = shapeRepository.GetShapes();
 

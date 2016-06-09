@@ -17,7 +17,17 @@ namespace ShapeTests.ViewModel.ViewModels
 
         private void Triangle_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            RaisePropertyChanged(() => TriangleName);
+           RaisePropertyChanged(() => TriangleName);
         }
+
+        //public override void RaisePropertyChanged(PropertyChangedEventArgs changedArgs)
+        //{
+        //    base.RaisePropertyChanged(changedArgs);
+
+        //    var changedEventHandler = PropertyChanged;
+        //    if (changedEventHandler == null)
+        //        return;
+        //    changedEventHandler(this, changedArgs);
+        //}
     }
 }
