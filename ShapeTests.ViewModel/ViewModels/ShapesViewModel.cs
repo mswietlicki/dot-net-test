@@ -6,9 +6,8 @@ using MvvmCross.Core.ViewModels;
 using ShapeTest.Business.Entities;
 using ShapeTest.Business.Repositories;
 using ShapeTest.Business.Services;
-using ShapeTests.ViewModel.ViewModels;
 
-namespace ShapeTests.ViewModel
+namespace ShapeTests.ViewModel.ViewModels
 {
     public class ShapesViewModel : ViewModel
     {

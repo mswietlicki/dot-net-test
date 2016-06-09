@@ -1,5 +1,6 @@
 ﻿using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
+using ShapeTests.ViewModel.ViewModels;
 
 namespace ShapeTests.ViewModel
 {

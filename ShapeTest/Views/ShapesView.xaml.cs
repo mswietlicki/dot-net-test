@@ -1,4 +1,4 @@
-﻿using ShapeTests.ViewModel;
+﻿using ShapeTests.ViewModel.ViewModels;
 
 namespace ShapeTest.Wpf.Views
 {

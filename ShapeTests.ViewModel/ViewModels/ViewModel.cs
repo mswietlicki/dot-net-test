@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using MvvmCross.Core.ViewModels;
 
-namespace ShapeTests.ViewModel
+namespace ShapeTests.ViewModel.ViewModels
 {
     public class ViewModel : MvxViewModel
     {
