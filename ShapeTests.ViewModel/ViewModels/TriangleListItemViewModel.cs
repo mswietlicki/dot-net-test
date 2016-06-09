@@ -31,14 +31,14 @@ namespace ShapeTests.ViewModel.ViewModels
             {
                 if (_Triangle != null)
                 {
-                    _Triangle.EntityChanged -= OnTriangleChanged;
+                    _Triangle.PropertyChanged -= OnTriangleChanged;
                 }
 
                 _Triangle = newTriangle;
 
                 if (_Triangle != null)
                 {
-                    _Triangle.EntityChanged += OnTriangleChanged;
+                    _Triangle.PropertyChanged += OnTriangleChanged;
                 }
 
                 UpdateViewModel();

@@ -1,48 +1,17 @@
-﻿namespace ShapeTest.Business.Entities
-{
-    using System;
-    using System.Collections.Generic;
+﻿using System.ComponentModel;
+using PropertyChanged;
 
+namespace ShapeTest.Business.Entities
+{
+    [ImplementPropertyChanged]
     public class Triangle : Shape
     {
-        private string _Name;
-        private double _Base;
-        private double _Height;
+        public override event PropertyChangedEventHandler PropertyChanged;
 
-        public event EntityChangedEventHandler EntityChanged;
-
-        public string Name
-        {
-            get { return _Name; }
-            set { SetAndRaiseIfChanged(ref _Name, value); }
-        }
-
-        public double Base
-        {
-            get { return _Base; }
-            set { SetAndRaiseIfChanged(ref _Base, value); }
-        }
-
-        public double Height
-        {
-            get { return _Height;}
-            set { SetAndRaiseIfChanged(ref _Height, value); }
-        }
-
-        public void OnEntityChanged()
-        {
-            EntityChangedEventHandler handler = EntityChanged;
-            handler?.Invoke(this, EventArgs.Empty);
-        }
-
-        public void SetAndRaiseIfChanged<T>(ref T backingField, T newValue)
-        {
-            if (!EqualityComparer<T>.Default.Equals(backingField, newValue))
-            {
-                backingField = newValue;
-                OnEntityChanged();
-            }
-        }
+        public string Name { get; set; }
+        public double Base { get; set; }
+        public double Height { get; set; }
+        
         public override double GetArea()
         {
             return 0.5 * Base * Height;

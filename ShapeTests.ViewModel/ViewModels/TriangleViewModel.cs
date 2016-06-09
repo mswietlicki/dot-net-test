@@ -1,36 +1,20 @@
 ﻿using System;
+using System.ComponentModel;
+using PropertyChanged;
+using ShapeTest.Business.Entities;
 
 namespace ShapeTests.ViewModel.ViewModels
 {
-    using System.ComponentModel;
-
-    using ShapeTest.Business.Entities;
-
+    [ImplementPropertyChanged]
     public class TriangleViewModel : ViewModel
     {
-        private string _Name;
-        private double _Base;
-        private double _Height;
-
         private Triangle _Triangle;
 
-        public string Name
-        {
-            get { return _Name; }
-            set { SetAndRaisePropertyChanged(ref _Name, value); }
-        }
+        public string Name { get; set; }
 
-        public double Base
-        {
-            get { return _Base; }
-            set { SetAndRaisePropertyChanged(ref _Base, value); }
-        }
+        public double Base { get; set; }
 
-        public double Height
-        {
-            get { return _Height; }
-            set { SetAndRaisePropertyChanged(ref _Height, value); }
-        }
+        public double Height { get; set; }
 
         public Triangle Triangle
         {
@@ -67,14 +51,14 @@ namespace ShapeTests.ViewModel.ViewModels
             {
                 if (_Triangle != null)
                 {
-                    _Triangle.EntityChanged -= OnTriangleChanged;
+                    _Triangle.PropertyChanged -= OnTriangleChanged;
                 }
 
                 _Triangle = newTriangle;
 
                 if (_Triangle != null)
                 {
-                    _Triangle.EntityChanged += OnTriangleChanged;
+                    _Triangle.PropertyChanged += OnTriangleChanged;
                 }
 
                 UpdateViewModel();

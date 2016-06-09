@@ -3,6 +3,9 @@
   "version": 2,
   "targets": {
     ".NETFramework,Version=v4.6": {
+      "Fody/1.29.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -107,6 +110,18 @@
         },
         "runtime": {
           "lib/net45/_._": {}
+        }
+      },
+      "PropertyChanged.Fody/1.51.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "1.29.2"
+        },
+        "compile": {
+          "Lib/dotnet/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/PropertyChanged.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -730,6 +745,9 @@
       }
     },
     ".NETFramework,Version=v4.6/win-x64": {
+      "Fody/1.29.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -834,6 +852,18 @@
         },
         "runtime": {
           "lib/net45/_._": {}
+        }
+      },
+      "PropertyChanged.Fody/1.51.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "1.29.2"
+        },
+        "compile": {
+          "Lib/dotnet/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/PropertyChanged.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -1494,6 +1524,9 @@
       }
     },
     ".NETFramework,Version=v4.6/win-x86": {
+      "Fody/1.29.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -1598,6 +1631,18 @@
         },
         "runtime": {
           "lib/net45/_._": {}
+        }
+      },
+      "PropertyChanged.Fody/1.51.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "1.29.2"
+        },
+        "compile": {
+          "Lib/dotnet/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/PropertyChanged.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -2258,6 +2303,9 @@
       }
     },
     ".NETPlatform,Version=v5.0": {
+      "Fody/1.29.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -2397,6 +2445,18 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.VisualBasic.dll": {}
+        }
+      },
+      "PropertyChanged.Fody/1.51.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "1.29.2"
+        },
+        "compile": {
+          "Lib/dotnet/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/PropertyChanged.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -3108,6 +3168,9 @@
       }
     },
     "DNXCore,Version=v5.0": {
+      "Fody/1.29.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -3284,6 +3347,18 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "PropertyChanged.Fody/1.51.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "1.29.2"
+        },
+        "compile": {
+          "Lib/dotnet/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/PropertyChanged.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -4241,6 +4316,9 @@
       }
     },
     "DNXCore,Version=v5.0/win7-x64": {
+      "Fody/1.29.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -4592,6 +4670,18 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "PropertyChanged.Fody/1.51.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "1.29.2"
+        },
+        "compile": {
+          "Lib/dotnet/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/PropertyChanged.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -5605,6 +5695,9 @@
       }
     },
     "DNXCore,Version=v5.0/win7-x86": {
+      "Fody/1.29.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -5956,6 +6049,18 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "PropertyChanged.Fody/1.51.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "1.29.2"
+        },
+        "compile": {
+          "Lib/dotnet/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/PropertyChanged.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -6969,6 +7074,9 @@
       }
     },
     "UAP,Version=v10.0": {
+      "Fody/1.29.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -7199,6 +7307,18 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "PropertyChanged.Fody/1.51.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "1.29.2"
+        },
+        "compile": {
+          "Lib/dotnet/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/PropertyChanged.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -8348,6 +8468,9 @@
       }
     },
     "UAP,Version=v10.0/win10-arm": {
+      "Fody/1.29.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -8571,6 +8694,18 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "PropertyChanged.Fody/1.51.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "1.29.2"
+        },
+        "compile": {
+          "Lib/dotnet/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/PropertyChanged.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -9622,6 +9757,9 @@
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
+      "Fody/1.29.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -9831,6 +9969,18 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "PropertyChanged.Fody/1.51.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "1.29.2"
+        },
+        "compile": {
+          "Lib/dotnet/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/PropertyChanged.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -10831,6 +10981,9 @@
       }
     },
     "UAP,Version=v10.0/win10-x64": {
+      "Fody/1.29.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -11061,6 +11214,18 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "PropertyChanged.Fody/1.51.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "1.29.2"
+        },
+        "compile": {
+          "Lib/dotnet/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/PropertyChanged.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -12112,6 +12277,9 @@
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
+      "Fody/1.29.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -12321,6 +12489,18 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "PropertyChanged.Fody/1.51.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "1.29.2"
+        },
+        "compile": {
+          "Lib/dotnet/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/PropertyChanged.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -13321,6 +13501,9 @@
       }
     },
     "UAP,Version=v10.0/win10-x86": {
+      "Fody/1.29.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -13551,6 +13734,18 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "PropertyChanged.Fody/1.51.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "1.29.2"
+        },
+        "compile": {
+          "Lib/dotnet/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/PropertyChanged.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -14602,6 +14797,9 @@
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
+      "Fody/1.29.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -14811,6 +15009,18 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "PropertyChanged.Fody/1.51.0": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "1.29.2"
+        },
+        "compile": {
+          "Lib/dotnet/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "Lib/dotnet/PropertyChanged.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -15812,6 +16022,27 @@
     }
   },
   "libraries": {
+    "Fody/1.29.4": {
+      "sha512": "GVlhR6Ngy5/plww+7WFMyWCjS/rFl3Nzev/DuAW7CXhfmMDmNEX+TQMmUQ7yflohNHT6u2RVCQhv2mMoJm81kg==",
+      "type": "package",
+      "files": [
+        "Content/FodyWeavers.xml",
+        "Fody.1.29.4.nupkg.sha512",
+        "Fody.dll",
+        "Fody.nuspec",
+        "Fody.pdb",
+        "FodyCommon.dll",
+        "FodyCommon.pdb",
+        "FodyIsolated.dll",
+        "FodyIsolated.pdb",
+        "Mono.Cecil.Mdb.dll",
+        "Mono.Cecil.Pdb.dll",
+        "Mono.Cecil.Rocks.dll",
+        "Mono.Cecil.dll",
+        "build/dotnet/Fody.targets",
+        "build/portable-net+sl+win+wpa+wp/Fody.targets"
+      ]
+    },
     "Microsoft.CSharp/4.0.0": {
       "sha512": "oWqeKUxHXdK6dL2CFjgMcaBISbkk+AqEg+yvJHE4DElNzS4QaTsCflgkkqZwVlWby1Dg9zo9n+iCAMFefFdJ/A==",
       "type": "Package",
@@ -16472,6 +16703,22 @@
         "ref/net46/Microsoft.Win32.Primitives.dll",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._"
+      ]
+    },
+    "PropertyChanged.Fody/1.51.0": {
+      "sha512": "4uO0gtL1SyTXUE+ixL1Pn6ss07B60FzW5EyLqNyi+OLyBMB5ebv8I3L8D8GP3U9VtwvJD7N7ZC0DZULN+bVBpw==",
+      "type": "package",
+      "files": [
+        "Lib/dotnet/PropertyChanged.dll",
+        "Lib/dotnet/PropertyChanged.xml",
+        "Lib/portable-net4+sl4+wp8+win8+wpa81+MonoAndroid16+MonoTouch40/PropertyChanged.dll",
+        "Lib/portable-net4+sl4+wp8+win8+wpa81+MonoAndroid16+MonoTouch40/PropertyChanged.xml",
+        "PropertyChanged.Fody.1.51.0.nupkg.sha512",
+        "PropertyChanged.Fody.dll",
+        "PropertyChanged.Fody.nuspec",
+        "PropertyChanged.Fody.pdb",
+        "Tools/install.ps1",
+        "Tools/uninstall.ps1"
       ]
     },
     "System.AppContext/4.0.0": {
@@ -18545,8 +18792,10 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Fody >= 1.29.4",
       "Microsoft.NETCore >= 5.0.0",
-      "Microsoft.NETCore.Portable.Compatibility >= 1.0.0"
+      "Microsoft.NETCore.Portable.Compatibility >= 1.0.0",
+      "PropertyChanged.Fody >= 1.51.0"
     ],
     ".NETPlatform,Version=v5.0": []
   }
