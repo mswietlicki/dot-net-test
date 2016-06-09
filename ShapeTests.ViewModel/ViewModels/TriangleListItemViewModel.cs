@@ -1,53 +1,23 @@
-﻿using System;
+﻿using System.ComponentModel;
+using PropertyChanged;
 using ShapeTest.Business.Entities;
 
 namespace ShapeTests.ViewModel.ViewModels
 {
+    [ImplementPropertyChanged]
     public class TriangleListItemViewModel : ViewModel
     {
-        private string _TriangleName;
-        private Triangle _Triangle;
+        public string TriangleName => Triangle.Name;
+        public Triangle Triangle { get; set; }
 
-        public string TriangleName
+        public void OnTriangleChanged()
         {
-            get { return _TriangleName; }
-            set { SetAndRaisePropertyChanged(ref _TriangleName, value);}
+            Triangle.PropertyChanged += Triangle_PropertyChanged;
         }
 
-        public Triangle Triangle
+        private void Triangle_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            get { return _Triangle; }
-            set { SetAndUpdateTriangleIfChanged(value); }
-        }
-
-        private void UpdateViewModel()
-        {
-            TriangleName = _Triangle.Name;
-        }
-
-        private void SetAndUpdateTriangleIfChanged(Triangle newTriangle)
-        {
-            if (!ReferenceEquals(_Triangle, newTriangle))
-            {
-                if (_Triangle != null)
-                {
-                    _Triangle.PropertyChanged -= OnTriangleChanged;
-                }
-
-                _Triangle = newTriangle;
-
-                if (_Triangle != null)
-                {
-                    _Triangle.PropertyChanged += OnTriangleChanged;
-                }
-
-                UpdateViewModel();
-            }
-        }
-
-        private void OnTriangleChanged(object sender, EventArgs args)
-        {
-            UpdateViewModel();
+            RaisePropertyChanged(() => TriangleName);
         }
     }
 }

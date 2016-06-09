@@ -4,7 +4,8 @@ namespace ShapeTest.Business.Entities
 {
     public abstract class Shape : INotifyPropertyChanged
     {
-        public abstract event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+        public string Name { get; set; }
         public abstract double GetArea();
     }
 }

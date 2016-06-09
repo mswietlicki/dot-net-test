@@ -3,30 +3,19 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using MvvmCross.Core.ViewModels;
+using PropertyChanged;
 using ShapeTest.Business.Entities;
 using ShapeTest.Business.Repositories;
 using ShapeTest.Business.Services;
 
 namespace ShapeTests.ViewModel.ViewModels
 {
+    [ImplementPropertyChanged]
     public class ShapesViewModel : ViewModel
     {
         private readonly IShapeRepository _ShapeRepo;
         private readonly IComputeAreaService _ComputeAreaService;
         private readonly ISubmissionService _SubmissionService;
-
-        private ObservableCollection<TriangleListItemViewModel> _TriangleListItems;
-
-        private TriangleListItemViewModel _SelectedTriangleListItemViewModel;
-
-        private TriangleViewModel _SelectedTriangleContentViewModel;
-
-        private double _TotalArea;
-
-        private MvxCommand _AddTriangleCommand;
-        private MvxCommand _RemoveTriangleCommand;
-        private MvxCommand _ComputeAreaCommand;
-        private MvxCommand _SubmitAreaCommand;
 
         public ShapesViewModel(IShapeRepository shapeRepo, 
                                IComputeAreaService computeAreaService,
@@ -36,7 +25,7 @@ namespace ShapeTests.ViewModel.ViewModels
             _ComputeAreaService = computeAreaService;
             _SubmissionService = submissionService;
 
-            _TriangleListItems = new ObservableCollection<TriangleListItemViewModel>();
+            TriangleListItems = new ObservableCollection<TriangleListItemViewModel>();
 
             AddTriangleCommand = new MvxCommand(AddTriangle);
             RemoveTriangleCommand = new MvxCommand(RemoveSelectedTriangle);
@@ -44,53 +33,21 @@ namespace ShapeTests.ViewModel.ViewModels
             SubmitAreaCommand = new MvxCommand(SubmitArea);
         }
 
-        public ObservableCollection<TriangleListItemViewModel> TriangleListItems
-        {
-            get { return _TriangleListItems; }
-            set { SetAndRaisePropertyChanged(ref _TriangleListItems, value); }
-        }
+        public ObservableCollection<TriangleListItemViewModel> TriangleListItems { get; set; }
 
-        public TriangleListItemViewModel SelectedTriangleListItemViewModel
-        {
-            get { return _SelectedTriangleListItemViewModel; }
-            set { SetAndRaisePropertyChanged(ref _SelectedTriangleListItemViewModel, value); }
-        }
+        public TriangleListItemViewModel SelectedTriangleListItemViewModel { get; set; }
 
-        public TriangleViewModel SelectedTriangleContentViewModel
-        {
-            get { return _SelectedTriangleContentViewModel; }
-            set { SetAndRaisePropertyChanged(ref _SelectedTriangleContentViewModel, value); }
-        }
+        public TriangleViewModel SelectedTriangleContentViewModel { get; set; }
 
-        public double TotalArea
-        {
-            get { return _TotalArea; }
-            set { SetAndRaisePropertyChanged(ref _TotalArea, value); }
-        }
+        public double TotalArea { get; set; }
 
-        public MvxCommand AddTriangleCommand
-        {
-            get { return _AddTriangleCommand; }
-            set { SetAndRaisePropertyChanged(ref _AddTriangleCommand, value);}
-        }
+        public MvxCommand AddTriangleCommand { get; set; }
 
-        public MvxCommand RemoveTriangleCommand
-        {
-            get { return _RemoveTriangleCommand; }
-            set { SetAndRaisePropertyChanged(ref _RemoveTriangleCommand, value); }
-        }
+        public MvxCommand RemoveTriangleCommand { get; set; }
 
-        public MvxCommand ComputeAreaCommand
-        {
-            get { return _ComputeAreaCommand; }
-            set { SetAndRaisePropertyChanged(ref _ComputeAreaCommand, value); }
-        }
+        public MvxCommand ComputeAreaCommand { get; set; }
 
-        public MvxCommand SubmitAreaCommand
-        {
-            get { return _SubmitAreaCommand; }
-            set { SetAndRaisePropertyChanged(ref _SubmitAreaCommand, value); }
-        }
+        public MvxCommand SubmitAreaCommand { get; set; }
 
         public override void RaisePropertyChanged(PropertyChangedEventArgs changedArgs)
         {
@@ -118,7 +75,7 @@ namespace ShapeTests.ViewModel.ViewModels
 
         public void OnShapeAdded(object sender, TriangleEventArgs args)
         {
-            TriangleListItemViewModel viewModel = new TriangleListItemViewModel { Triangle = args.Triangle };
+            var viewModel = new TriangleListItemViewModel { Triangle = args.Triangle };
             TriangleListItems.Add(viewModel);
         }
 
@@ -143,24 +100,19 @@ namespace ShapeTests.ViewModel.ViewModels
             _SubmissionService.SubmitTotalArea(TotalArea);
         }
 
-        private ObservableCollection<TriangleListItemViewModel> CreateListViewModelsFromTriangeList(List<Triangle> triangles)
+        private ObservableCollection<TriangleListItemViewModel> CreateListViewModelsFromTriangeList(IEnumerable<Triangle> triangles)
         {
-            ObservableCollection<TriangleListItemViewModel> viewModels = new ObservableCollection<TriangleListItemViewModel>();
-            foreach (var triangle in triangles)
-            {
-                TriangleListItemViewModel viewModel = new TriangleListItemViewModel { Triangle = triangle };
-                viewModels.Add(viewModel);
-            }
-            return viewModels;
+            var viewModels = triangles.Select(_ => new TriangleListItemViewModel { Triangle = _ });
+            return new ObservableCollection<TriangleListItemViewModel>(viewModels);
         }
 
         private void UpdateTriangleContent()
         {
             if (SelectedTriangleListItemViewModel != null)
             {
-                TriangleViewModel contentViewModel = new TriangleViewModel
+                var contentViewModel = new TriangleViewModel
                 {
-                    Triangle = _SelectedTriangleListItemViewModel.Triangle
+                    Triangle = SelectedTriangleListItemViewModel.Triangle
                 };
                 SelectedTriangleContentViewModel = contentViewModel;
             }

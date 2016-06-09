@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using PropertyChanged;
+﻿using PropertyChanged;
 using ShapeTest.Business.Entities;
 
 namespace ShapeTests.ViewModel.ViewModels
@@ -8,73 +6,23 @@ namespace ShapeTests.ViewModel.ViewModels
     [ImplementPropertyChanged]
     public class TriangleViewModel : ViewModel
     {
-        private Triangle _Triangle;
-
-        public string Name { get; set; }
-
-        public double Base { get; set; }
-
-        public double Height { get; set; }
-
-        public Triangle Triangle
+        public Triangle Triangle { get; set; }
+        public string Name
         {
-            get
-            {
-                return _Triangle;
-            }
-            set
-            {
-                SetAndUpdateTraingleIfChanged(value);
-            }
+            get { return Triangle.Name; }
+            set { Triangle.Name = value; }
         }
 
-        public override void RaisePropertyChanged(PropertyChangedEventArgs changedArgs)
+        public double Base
         {
-            base.RaisePropertyChanged(changedArgs);
-            if (changedArgs.PropertyName == nameof(Name))
-            {
-                Triangle.Name = Name;
-            }
-            else if (changedArgs.PropertyName == nameof(Base))
-            {
-                Triangle.Base = Base;
-            }
-            else if (changedArgs.PropertyName == nameof(Height))
-            {
-                Triangle.Height = Height;
-            }
+            get { return Triangle.Base; }
+            set { Triangle.Base = value; }
         }
 
-        private void SetAndUpdateTraingleIfChanged(Triangle newTriangle)
+        public double Height
         {
-            if (!ReferenceEquals(_Triangle, newTriangle))
-            {
-                if (_Triangle != null)
-                {
-                    _Triangle.PropertyChanged -= OnTriangleChanged;
-                }
-
-                _Triangle = newTriangle;
-
-                if (_Triangle != null)
-                {
-                    _Triangle.PropertyChanged += OnTriangleChanged;
-                }
-
-                UpdateViewModel();
-            }
-        }
-
-        private void OnTriangleChanged(object sender, EventArgs args)
-        {
-            UpdateViewModel();
-        }
-
-        private void UpdateViewModel()
-        {
-            Name = _Triangle.Name;
-            Base = _Triangle.Base;
-            Height = _Triangle.Height;
+            get { return Triangle.Height; }
+            set { Triangle.Height = value; }
         }
     }
 }

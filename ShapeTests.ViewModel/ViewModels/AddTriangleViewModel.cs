@@ -1,42 +1,21 @@
 ﻿using MvvmCross.Core.ViewModels;
+using PropertyChanged;
+using ShapeTest.Business.Entities;
+using ShapeTest.Business.Repositories;
 
 namespace ShapeTests.ViewModel.ViewModels
 {
-    using ShapeTest.Business.Entities;
-    using ShapeTest.Business.Repositories;
-
+    [ImplementPropertyChanged]
     public class AddTriangleViewModel : ViewModel, IPopupViewModel
     {
         private readonly IShapeRepository _ShapeRepo;
-
-        private int _OwnerId;
-
-        private MvxCommand _AddTriangleCommand;
-        private MvxCommand _CancelCommand;
-
+        
         public bool IsModal => true;
-
         public bool TopMost => true;
-
-        public int OwnerId
-        {
-            get { return _OwnerId;} 
-            set { SetAndRaisePropertyChanged(ref _OwnerId, value); }
-        }
-
-        public MvxCommand AddTriangleCommand
-        {
-            get { return _AddTriangleCommand; }
-            set { SetAndRaisePropertyChanged(ref _AddTriangleCommand, value);}
-        }
-
-        public MvxCommand CancelCommand
-        {
-            get { return _CancelCommand; }
-            set { SetAndRaisePropertyChanged(ref _CancelCommand, value);}
-        }
-
-
+        public int OwnerId { get; set; }
+        public MvxCommand AddTriangleCommand { get; set; }
+        public MvxCommand CancelCommand { get; set; }
+        
         public AddTriangleViewModel(IShapeRepository shapeRepo)
         {
             _ShapeRepo = shapeRepo;
@@ -46,9 +25,9 @@ namespace ShapeTests.ViewModel.ViewModels
 
         public void AddTriangle()
         {
-            Triangle triangle = new Triangle
+            var triangle = new Triangle
             {
-                Name = "New Triangle"                            
+                Name = "New Triangle"
             };
 
             _ShapeRepo.AddShape(triangle);
