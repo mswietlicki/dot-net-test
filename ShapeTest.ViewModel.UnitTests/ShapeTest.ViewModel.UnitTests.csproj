@@ -95,6 +95,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CircleViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShapesViewModelTests.cs" />
     <Compile Include="TriangleListViewModelTests.cs" />

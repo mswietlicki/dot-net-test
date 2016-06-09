@@ -42,10 +42,11 @@
     <Compile Include="ShapeApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AddTriangleViewModel.cs" />
+    <Compile Include="ViewModels\Shapes\CircleViewModel.cs" />
     <Compile Include="ViewModels\IPopupViewModel.cs" />
     <Compile Include="ViewModels\ShapesViewModel.cs" />
     <Compile Include="ViewModels\TriangleListItemViewModel.cs" />
-    <Compile Include="ViewModels\TriangleViewModel.cs" />
+    <Compile Include="ViewModels\Shapes\TriangleViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

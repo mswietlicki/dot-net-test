@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:views="clr-namespace:MvvmCross.Wpf.Views;assembly=MvvmCross.Wpf"
              xmlns:viewModels="clr-namespace:ShapeTests.ViewModel.ViewModels;assembly=ShapeTests.ViewModel"
+             xmlns:shapes="clr-namespace:ShapeTests.ViewModel.ViewModels.Shapes;assembly=ShapeTests.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <views:MvxWpfView.Resources>
@@ -13,7 +14,7 @@
                 <TextBlock x:Name="TriangleName" Text="{Binding TriangleName}" />
             </Grid>
         </DataTemplate>
-        <DataTemplate x:Key="TriangleContentTemplate" DataType="{x:Type viewModels:TriangleViewModel}">
+        <DataTemplate x:Key="TriangleContentTemplate" DataType="{x:Type shapes:TriangleViewModel}">
             <Grid HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>

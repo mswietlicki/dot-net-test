@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShapeTest.Business.Entities;
 using ShapeTests.ViewModel.ViewModels;
+using ShapeTests.ViewModel.ViewModels.Shapes;
 
 namespace ShapeTest.ViewModel.UnitTests
 {
@@ -56,7 +57,7 @@ namespace ShapeTest.ViewModel.UnitTests
         }
 
         [TestMethod]
-        public void ShouldUpdateTriangleBaseWhenViewModelNameChanges()
+        public void ShouldUpdateTriangleBaseWhenViewModelHeightChanges()
         {
             // Arrange
             const double oldBase = 23;
@@ -82,7 +83,7 @@ namespace ShapeTest.ViewModel.UnitTests
         }
 
         [TestMethod]
-        public void ShouldUpdateTriangleHeightWhenViewModelNameChanges()
+        public void ShouldUpdateTriangleHeightWhenViewModelHeightChanges()
         {
             // Arrange
             const double oldHeight = 12;
@@ -90,9 +91,9 @@ namespace ShapeTest.ViewModel.UnitTests
             const double expectedBase = 42;
             const double expectedHeight = 3.14;
 
-            Triangle testTriangle = CreateTriangle(expectedName, expectedBase, oldHeight);
+            var testTriangle = CreateTriangle(expectedName, expectedBase, oldHeight);
 
-            TriangleViewModel viewModel = new TriangleViewModel { Triangle = testTriangle };
+            var viewModel = new TriangleViewModel { Triangle = testTriangle };
 
             // Act
             viewModel.Height = expectedHeight;

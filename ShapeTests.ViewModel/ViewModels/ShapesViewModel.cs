@@ -7,6 +7,7 @@ using PropertyChanged;
 using ShapeTest.Business.Entities;
 using ShapeTest.Business.Repositories;
 using ShapeTest.Business.Services;
+using ShapeTests.ViewModel.ViewModels.Shapes;
 
 namespace ShapeTests.ViewModel.ViewModels
 {
