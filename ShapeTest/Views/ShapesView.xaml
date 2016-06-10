@@ -7,7 +7,8 @@
              xmlns:viewModels="clr-namespace:ShapeTests.ViewModel.ViewModels;assembly=ShapeTests.ViewModel"
              xmlns:shapes="clr-namespace:ShapeTests.ViewModel.ViewModels.Shapes;assembly=ShapeTests.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance viewModels:ShapesViewModel}">
     <views:MvxWpfView.Resources>
         <DataTemplate x:Key ="TriangleListItemTemplate" DataType="{x:Type viewModels:ShapeListItemViewModel}">
             <Grid>
@@ -43,7 +44,7 @@
         </DataTemplate>
         
     </views:MvxWpfView.Resources>
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
@@ -52,7 +53,7 @@
             <ColumnDefinition Width="120"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Row="0" Grid.Column="0" ItemsSource="{Binding TriangleListItems}" SelectedItem="{Binding SelectedTriangleListItemViewModel}" ItemTemplate="{StaticResource TriangleListItemTemplate}"/>
+        <ListBox Grid.Row="0" Grid.Column="0" ItemsSource="{Binding ShapeListItems}" SelectedItem="{Binding SelectedShapeListItemViewModel}" ItemTemplate="{StaticResource TriangleListItemTemplate}"/>
         <ContentControl Grid.Row="0" Grid.Column="1" Content="{Binding SelectedTriangleContentViewModel}" ContentTemplate="{StaticResource TriangleContentTemplate}"/>
         
         <Grid Margin="4,4,4,4" Grid.Row="1" Grid.Column="0">
@@ -61,8 +62,8 @@
                 <ColumnDefinition Width="8"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" x:Name="Add" Content="Add" Command="{Binding AddTriangleCommand}"/>
-            <Button Grid.Column="2" x:Name="Remove" Content="Remove" Command="{Binding RemoveTriangleCommand}"/>
+            <Button Grid.Column="0" x:Name="Add" Content="Add" Command="{Binding AddShapeCommand}"/>
+            <Button Grid.Column="2" x:Name="Remove" Content="Remove" Command="{Binding RemoveShapeCommand}"/>
         </Grid>
         
         <Grid Margin="4,4,4,4" Grid.Row="1" Grid.Column="1">
@@ -76,7 +77,7 @@
                 <TextBlock VerticalAlignment="Center" Text="Total Area:"/>
                 <TextBlock VerticalAlignment="Center" Text="{Binding TotalArea}"></TextBlock>
             </StackPanel>
-            <Button Grid.Column="2" Content="Submit Total Area" Command="{Binding SubmitAreaCommand}"/>
+            <Button Grid.Column="2" Content="Submit Total Area" Command="{Binding SubmitAreaCommand}" IsEnabled="{Binding IsSubmitEnabled}"/>
         </Grid>
         
     </Grid>

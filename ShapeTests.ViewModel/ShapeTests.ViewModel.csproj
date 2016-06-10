@@ -42,11 +42,14 @@
     <Compile Include="ShapeApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AddShapeViewModel.cs" />
+    <Compile Include="ViewModels\AlertViewModel.cs" />
+    <Compile Include="ViewModels\IUserInteraction.cs" />
     <Compile Include="ViewModels\Shapes\CircleViewModel.cs" />
     <Compile Include="ViewModels\IPopupViewModel.cs" />
     <Compile Include="ViewModels\ShapesViewModel.cs" />
     <Compile Include="ViewModels\ShapeListItemViewModel.cs" />
     <Compile Include="ViewModels\Shapes\TriangleViewModel.cs" />
+    <Compile Include="ViewModels\UserInteraction.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

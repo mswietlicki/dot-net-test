@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using MvvmCross.Core.ViewModels;
 using PropertyChanged;
 using ShapeTest.Business.Entities;
@@ -17,14 +20,17 @@ namespace ShapeTests.ViewModel.ViewModels
         private readonly IShapeRepository _ShapeRepo;
         private readonly IComputeAreaService _ComputeAreaService;
         private readonly ISubmissionService _SubmissionService;
+        private readonly IUserInteraction _UserInteraction;
 
         public ShapesViewModel(IShapeRepository shapeRepo, 
                                IComputeAreaService computeAreaService,
-                               ISubmissionService submissionService)
+                               ISubmissionService submissionService,
+                               IUserInteraction userInteraction)
         {
             _ShapeRepo = shapeRepo;
             _ComputeAreaService = computeAreaService;
             _SubmissionService = submissionService;
+            _UserInteraction = userInteraction;
 
             ShapeListItems = new ObservableCollection<ShapeListItemViewModel>();
 
@@ -33,6 +39,7 @@ namespace ShapeTests.ViewModel.ViewModels
             ComputeAreaCommand = new MvxCommand(ComputeTotalArea);
             SubmitAreaCommand = new MvxCommand(SubmitArea);
         }
+        public bool IsSubmitEnabled { get; set; } = true;
 
         public ObservableCollection<ShapeListItemViewModel> ShapeListItems { get; set; }
 
@@ -96,9 +103,22 @@ namespace ShapeTests.ViewModel.ViewModels
             TotalArea = _ComputeAreaService.ComputeTotalArea();
         }
 
-        public void SubmitArea()
+        public async void SubmitArea()
         {
-            _SubmissionService.SubmitTotalArea(TotalArea);
+            IsSubmitEnabled = false;
+            try
+            {
+                await Task.Run(() => _SubmissionService.SubmitTotalArea(TotalArea));
+                _UserInteraction.Alert("Submit successful.", "Submit successful");
+            }
+            catch (Exception ex)
+            {
+                _UserInteraction.Alert(ex.Message, "Submit error");
+            }
+            finally
+            {
+                IsSubmitEnabled = true;
+            }
         }
 
         private ObservableCollection<ShapeListItemViewModel> CreateListViewModelsFromTriangeList(IEnumerable<Triangle> triangles)

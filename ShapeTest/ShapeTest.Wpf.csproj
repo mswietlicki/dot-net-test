@@ -92,6 +92,9 @@
     </Compile>
     <Compile Include="Setup.cs" />
     <Compile Include="ShapeTestPresenter.cs" />
+    <Compile Include="Views\AlertView.xaml.cs">
+      <DependentUpon>AlertView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddShapeView.xaml.cs">
       <DependentUpon>AddShapeView.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
     <Page Include="Popup\PopupWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AlertView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AddShapeView.xaml">
       <SubType>Designer</SubType>
