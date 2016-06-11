@@ -45,7 +45,7 @@ namespace ShapeTests.ViewModel.ViewModels
 
         public ShapeListItemViewModel SelectedShapeListItemViewModel { get; set; }
 
-        public TriangleViewModel SelectedTriangleContentViewModel { get; set; }
+        public TriangleViewModel SelectedShapeContentViewModel { get; set; }
 
         public double TotalArea { get; set; }
 
@@ -63,17 +63,17 @@ namespace ShapeTests.ViewModel.ViewModels
 
             if (changedArgs.PropertyName == nameof(SelectedShapeListItemViewModel))
             {
-                UpdateTriangleContent();
+                UpdateShapeContent();
             }
         }
 
         public override void Start()
         {
            var shapes = _ShapeRepo.GetShapes();
-           ShapeListItems = CreateListViewModelsFromTriangeList(shapes.Cast<Triangle>().ToList());
+           ShapeListItems = CreateListViewModelsFromShapeList(shapes);
            SelectedShapeListItemViewModel = ShapeListItems.FirstOrDefault();
 
-            _ShapeRepo.TriangleAdded += OnShapeAdded;
+            _ShapeRepo.ShapeAdded += OnShapeAdded;
         }
 
         public void AddShape()
@@ -92,7 +92,7 @@ namespace ShapeTests.ViewModel.ViewModels
             if (SelectedShapeListItemViewModel != null)
             {
                 var viewModelToDelete = SelectedShapeListItemViewModel;
-                SelectedTriangleContentViewModel = null;
+                SelectedShapeContentViewModel = null;
                 _ShapeRepo.RemoveShape(viewModelToDelete.Shape);
                 ShapeListItems.Remove(viewModelToDelete);
             }
@@ -121,21 +121,22 @@ namespace ShapeTests.ViewModel.ViewModels
             }
         }
 
-        private ObservableCollection<ShapeListItemViewModel> CreateListViewModelsFromTriangeList(IEnumerable<Triangle> triangles)
+        private ObservableCollection<ShapeListItemViewModel> CreateListViewModelsFromShapeList(IEnumerable<Shape> shapes)
         {
-            var viewModels = triangles.Select(_ => new ShapeListItemViewModel { Shape = _ });
+            var viewModels = shapes.Select(_ => new ShapeListItemViewModel { Shape = _ });
             return new ObservableCollection<ShapeListItemViewModel>(viewModels);
         }
 
-        private void UpdateTriangleContent()
+        private void UpdateShapeContent()
         {
             if (SelectedShapeListItemViewModel != null)
             {
-                var contentViewModel = new TriangleViewModel
-                {
-                    Triangle = SelectedShapeListItemViewModel.Shape as Triangle
-                };
-                SelectedTriangleContentViewModel = contentViewModel;
+                if (SelectedShapeListItemViewModel.Shape is Triangle) {
+                    var contentViewModel = new TriangleViewModel {
+                        Triangle = (Triangle)SelectedShapeListItemViewModel.Shape
+                    };
+                    SelectedShapeContentViewModel = contentViewModel;
+                }
             }
             else
             {

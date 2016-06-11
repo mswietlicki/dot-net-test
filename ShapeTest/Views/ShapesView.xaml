@@ -54,7 +54,7 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <ListBox Grid.Row="0" Grid.Column="0" ItemsSource="{Binding ShapeListItems}" SelectedItem="{Binding SelectedShapeListItemViewModel}" ItemTemplate="{StaticResource TriangleListItemTemplate}"/>
-        <ContentControl Grid.Row="0" Grid.Column="1" Content="{Binding SelectedTriangleContentViewModel}" ContentTemplate="{StaticResource TriangleContentTemplate}"/>
+        <ContentControl Grid.Row="0" Grid.Column="1" Content="{Binding SelectedShapeContentViewModel}" ContentTemplate="{StaticResource TriangleContentTemplate}"/>
         
         <Grid Margin="4,4,4,4" Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>

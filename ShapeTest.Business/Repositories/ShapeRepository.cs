@@ -34,7 +34,7 @@ namespace ShapeTest.Business.Repositories
             };
         }
 
-        public event TriangleAddedEventHandler TriangleAdded;
+        public event ShapeAddedEventHandler ShapeAdded;
 
         public List<Shape> GetShapes()
         {
@@ -54,8 +54,8 @@ namespace ShapeTest.Business.Repositories
 
         protected void OnShapeAdded(Shape shape)
         {
-            TriangleAddedEventHandler handler = TriangleAdded;
-            handler?.Invoke(this, new ShapeEventArgs(shape as Triangle));
+            var handler = ShapeAdded;
+            handler?.Invoke(this, new ShapeEventArgs(shape));
         }
     }
 }

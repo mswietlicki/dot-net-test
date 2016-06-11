@@ -6,7 +6,7 @@ namespace ShapeTest.Business.Repositories
 {
     public interface IShapeRepository
     {
-        event TriangleAddedEventHandler TriangleAdded;
+        event ShapeAddedEventHandler ShapeAdded;
         
         List<Shape> GetShapes();
         void AddShape(Shape shape);

@@ -10,12 +10,12 @@ namespace ShapeTests.ViewModel.ViewModels
         public string ShapeName => Shape.Name;
         public Shape Shape { get; set; }
 
-        public void OnTriangleChanged()
+        public void OnShapeChanged()
         {
-            Shape.PropertyChanged += Triangle_PropertyChanged;
+            Shape.PropertyChanged += Shape_PropertyChanged;
         }
 
-        private void Triangle_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void Shape_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
            RaisePropertyChanged(() => ShapeName);
         }
