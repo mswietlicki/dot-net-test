@@ -18,6 +18,7 @@ namespace ShapeTests.ViewModel
         {
             Mvx.LazyConstructAndRegisterSingleton<IShapeRepository>(() => new ShapeRepository());
             Mvx.RegisterType<IComputeAreaService, ComputeAreaService>();
+            Mvx.RegisterType<IShapeFactory, ShapeFactory>();
             Mvx.RegisterType<ISubmissionService, SubmissionService>();
             Mvx.RegisterType<IUserInteraction, UserInteraction>();
         }

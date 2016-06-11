@@ -35,7 +35,7 @@ namespace ShapeTests.ViewModel.ViewModels
             ShapeListItems = new ObservableCollection<ShapeListItemViewModel>();
 
             AddShapeCommand = new MvxCommand(AddShape);
-            RemoveShapeCommand = new MvxCommand(RemoveSelectedTriangle);
+            RemoveShapeCommand = new MvxCommand(RemoveSelectedShape);
             ComputeAreaCommand = new MvxCommand(ComputeTotalArea);
             SubmitAreaCommand = new MvxCommand(SubmitArea);
         }
@@ -81,13 +81,13 @@ namespace ShapeTests.ViewModel.ViewModels
             ShowViewModel<AddShapeViewModel>();
         }
 
-        public void OnShapeAdded(object sender, TriangleEventArgs args)
+        public void OnShapeAdded(object sender, ShapeEventArgs args)
         {
-            var viewModel = new ShapeListItemViewModel { Shape = args.Triangle };
+            var viewModel = new ShapeListItemViewModel { Shape = args.Shape };
             ShapeListItems.Add(viewModel);
         }
 
-        public void RemoveSelectedTriangle()
+        public void RemoveSelectedShape()
         {
             if (SelectedShapeListItemViewModel != null)
             {

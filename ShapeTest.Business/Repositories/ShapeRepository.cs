@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ShapeTest.Business.Entities;
 
@@ -54,7 +55,7 @@ namespace ShapeTest.Business.Repositories
         protected void OnShapeAdded(Shape shape)
         {
             TriangleAddedEventHandler handler = TriangleAdded;
-            handler?.Invoke(this, new TriangleEventArgs(shape as Triangle));
+            handler?.Invoke(this, new ShapeEventArgs(shape as Triangle));
         }
     }
 }
