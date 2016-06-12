@@ -1,12 +1,18 @@
-﻿using PropertyChanged;
+﻿using System.Runtime.InteropServices.ComTypes;
+using PropertyChanged;
 using ShapeTest.Business.Entities;
 
 namespace ShapeTests.ViewModel.ViewModels.Shapes
 {
     [ImplementPropertyChanged]
-    public class TriangleViewModel : ViewModel
+    public class TriangleViewModel : ShapeViewModel
     {
-        public Triangle Triangle { get; set; }
+        public Triangle Triangle
+        {
+            get { return Shape as Triangle; }
+            set { Shape = value; }
+        }
+
         public string Name
         {
             get { return Triangle.Name; }

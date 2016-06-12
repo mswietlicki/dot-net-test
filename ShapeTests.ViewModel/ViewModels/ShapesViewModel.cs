@@ -21,16 +21,19 @@ namespace ShapeTests.ViewModel.ViewModels
         private readonly IComputeAreaService _ComputeAreaService;
         private readonly ISubmissionService _SubmissionService;
         private readonly IUserInteraction _UserInteraction;
+        private readonly IShapeViewModelFactory _ShapeViewModelFactory;
 
         public ShapesViewModel(IShapeRepository shapeRepo, 
                                IComputeAreaService computeAreaService,
                                ISubmissionService submissionService,
-                               IUserInteraction userInteraction)
+                               IUserInteraction userInteraction,
+                               IShapeViewModelFactory shapeViewModelFactory)
         {
             _ShapeRepo = shapeRepo;
             _ComputeAreaService = computeAreaService;
             _SubmissionService = submissionService;
             _UserInteraction = userInteraction;
+            _ShapeViewModelFactory = shapeViewModelFactory;
 
             ShapeListItems = new ObservableCollection<ShapeListItemViewModel>();
 
@@ -45,7 +48,7 @@ namespace ShapeTests.ViewModel.ViewModels
 
         public ShapeListItemViewModel SelectedShapeListItemViewModel { get; set; }
 
-        public TriangleViewModel SelectedShapeContentViewModel { get; set; }
+        public ViewModel SelectedShapeContentViewModel { get; set; }
 
         public double TotalArea { get; set; }
 
@@ -131,12 +134,7 @@ namespace ShapeTests.ViewModel.ViewModels
         {
             if (SelectedShapeListItemViewModel != null)
             {
-                if (SelectedShapeListItemViewModel.Shape is Triangle) {
-                    var contentViewModel = new TriangleViewModel {
-                        Triangle = (Triangle)SelectedShapeListItemViewModel.Shape
-                    };
-                    SelectedShapeContentViewModel = contentViewModel;
-                }
+                SelectedShapeContentViewModel = _ShapeViewModelFactory.Create(SelectedShapeListItemViewModel.Shape);
             }
             else
             {

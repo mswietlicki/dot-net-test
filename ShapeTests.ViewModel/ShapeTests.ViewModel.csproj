@@ -48,6 +48,11 @@
     <Compile Include="ViewModels\IPopupViewModel.cs" />
     <Compile Include="ViewModels\ShapesViewModel.cs" />
     <Compile Include="ViewModels\ShapeListItemViewModel.cs" />
+    <Compile Include="ViewModels\Shapes\IShapeViewModelFactory.cs" />
+    <Compile Include="ViewModels\Shapes\RectangleViewModel.cs" />
+    <Compile Include="ViewModels\Shapes\ShapeViewModel.cs" />
+    <Compile Include="ViewModels\Shapes\ShapeViewModelFactory.cs" />
+    <Compile Include="ViewModels\Shapes\SquareViewModel.cs" />
     <Compile Include="ViewModels\Shapes\TriangleViewModel.cs" />
     <Compile Include="ViewModels\UserInteraction.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />

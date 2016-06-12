@@ -1,6 +1,7 @@
 ﻿using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using ShapeTests.ViewModel.ViewModels;
+using ShapeTests.ViewModel.ViewModels.Shapes;
 
 namespace ShapeTests.ViewModel
 {
@@ -19,6 +20,7 @@ namespace ShapeTests.ViewModel
             Mvx.LazyConstructAndRegisterSingleton<IShapeRepository>(() => new ShapeRepository());
             Mvx.RegisterType<IComputeAreaService, ComputeAreaService>();
             Mvx.RegisterType<IShapeFactory, ShapeFactory>();
+            Mvx.RegisterType<IShapeViewModelFactory, ShapeViewModelFactory>();
             Mvx.RegisterType<ISubmissionService, SubmissionService>();
             Mvx.RegisterType<IUserInteraction, UserInteraction>();
         }
