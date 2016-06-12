@@ -88,6 +88,7 @@ namespace ShapeTests.ViewModel.ViewModels
         {
             var viewModel = new ShapeListItemViewModel { Shape = args.Shape };
             ShapeListItems.Add(viewModel);
+            SelectedShapeListItemViewModel = viewModel;
         }
 
         public void RemoveSelectedShape()
